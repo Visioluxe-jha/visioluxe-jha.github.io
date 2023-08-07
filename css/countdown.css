@@ -1,0 +1,117 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: monospace;
+}
+
+@font-face {
+  font-family: "NimbusSansDOT";
+  src: url("../fonts/NimbusSansDOT-BoldExtended.woff") format("woff"),
+    url("../fonts/NimbusSansDOT-BoldExtended.woff2") format("woff2");
+}
+
+body {
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background-color: black;
+  transform-style: preserve-3d;
+  font-family: "NimbusSansDOT", sans-serif;
+  background: url("../img/horizontal/V1/IMAGEN_FONDO_V1_1.jpg");
+  background-size: cover;
+}
+
+body:after {
+  content: "";
+
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: block;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  mix-blend-mode: screen;
+
+  opacity: 0;
+}
+
+.countdown {
+  transform-style: preserve-3d;
+  animation: animate 8s linear infinite;
+  --deg: calc(360deg / var(--numchs));
+  z-index: 1;
+  position: absolute;
+  left: 28vw;
+}
+
+@keyframes animate {
+  0% {
+    transform: perspective(2000px) rotateY(360deg) rotateX(15deg);
+  }
+
+  100% {
+    transform: perspective(2000px) rotateY(0deg) rotateX(15deg);
+  }
+}
+
+.countdown .char {
+  position: absolute;
+  top: 0;
+  left: 0;
+  color: white;
+  font-size: 3vw;
+  text-transform: uppercase;
+  padding: 5px 12px;
+  transform-style: preserve-3d;
+  transform-origin: center;
+  transform: rotateY(calc(var(--char-index) * var(--deg))) translateZ(23vw);
+  font-family: "NimbusSansDOT", sans-serif;
+}
+
+.glasses {
+  position: absolute;
+  width: 40%;
+  height: auto;
+  z-index: 0;
+  left: 8vw;
+}
+
+.logo_in {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  left: 0;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.logo_out {
+  position: absolute;
+  z-index: -1;
+  top: 0;
+  right: 0;
+  height: 100%;
+  opacity: 0.5;
+}
+
+.text_container {
+  position: absolute;
+  text-align: right;
+  right: 3vw;
+  display: grid;
+  width: 40%;
+}
+
+.logo_text {
+  margin-left: 9vw;
+  margin-bottom: 2vw;
+  width: 50%;
+}
+
+.text {
+  width: 100%;
+}
